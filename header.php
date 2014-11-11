@@ -19,7 +19,7 @@
 
 <header id="masthead" class="site-header" role="banner">
   <?php $args = array( 'title_li' => '', 'depth' => 1 ); ?>
-  <nav id="gnb" class="site-navigation gnb gnb-mobile navbar navbar-default navbar-fixed-top visible-xs" role="navigation">
+  <nav id="gnb" class="site-navigation gnb gnb-mobile navbar navbar-transparent navbar-fixed-top visible-xs" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnb-collapse">
@@ -30,7 +30,10 @@
         </button>
       </div>
       <div class="collapse navbar-collapse navbar-right" id="gnb-collapse">
-        <ul class="nav navbar-nav"><?php wp_list_categories( $args ); ?></ul>
+        <ul class="nav navbar-nav">
+          <li class="cat-item<?php if( is_home() ) { echo ' current-cat'; } ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">전체</a></li>
+          <?php wp_list_categories( $args ); ?>
+        </ul>
       </div>
     </div>
   </nav>
@@ -38,8 +41,11 @@
     <div class="container">
       <h1 id="brand" class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
       <?php if ( get_bloginfo( 'description' ) ) : ?><p class="site-description"><?php bloginfo( 'description' ); ?></p><?php endif; ?>
-      <p class="site-about"><a href="<?php echo home_url( '/about' ) ?>" class="btn btn-default btn-sm">about</a></p>
-      <ul class="cat-list list-inline hidden-xs"><?php wp_list_categories( $args ); ?></ul>
+      <p class="site-about"><a href="<?php echo home_url( '/about' ) ?>" class="btn btn-about btn-sm">about</a></p>
+      <ul class="cat-list hidden-xs">
+        <li class="cat-item<?php if( is_home() ) { echo ' current-cat'; } ?>"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">전체</a></li>
+        <?php wp_list_categories( $args ); ?>
+      </ul>
     </div>
   </nav>
 </header><!-- #masthead -->

@@ -77,11 +77,39 @@ function akaiv_the_title() {
 
 /* 글: URL */
 function akaiv_get_url() {
-  $url = get_post_meta( get_the_ID(), 'wpcf-url', true );
+  $url = get_post_meta( get_the_ID(), 'wpcf-website-url', true );
   return esc_url( $url );
 }
 function akaiv_the_url() {
   echo akaiv_get_url();
+}
+
+/* 글: URL 호스트 */
+function akaiv_the_url_hostname() {
+  $url = akaiv_get_url();
+  if ( $url ) :
+    $urlHosts = array(
+      # 미디어
+      'www.venturesquare.net'   => '벤처스퀘어',
+      'platum.kr'               => '플래텀',
+      'besuccess.com'           => 'beSUCCESS',
+      'www.bloter.net'          => '블로터닷넷',
+      'www.etnews.com'          => '전자신문',
+      'ppss.kr'                 => 'ㅍㅍㅅㅅ',
+
+      # 블로그
+      'www.thestartupbible.com' => '스타트업 바이블',
+      'www.jimmyrim.com'        => '지미림\'s 블로그',
+      'www.infuture.kr'         => '인퓨처컨설팅 &amp, 유정식',
+      'sungmooncho.com'         => '조성문의 실리콘밸리 이야기',
+      'estima.wordpress.com'    => '에스티마의 인터넷이야기'
+    );
+
+    $urlHost = parse_url($url)['host'];
+    $urlHostName = empty( $urlHosts[$urlHost] ) ? $urlHost : $urlHosts[$urlHost];
+
+    echo '<span class="url-hostname"><i class="fa fa-fw fa-quote-left"></i> <a href="<?php akaiv_the_url(); ?>" target="_blank" class="url">'.$urlHostName.'</a></span>';
+  endif;
 }
 
 /* 글: 썸네일 */
