@@ -5,21 +5,40 @@
 
 // 글: 제목
 .entry-title {
-	.font-size(18);
+	.font-size(16);
 	@media (min-width: @tablet) {
-		.font-size(22);
+		.font-size(28);
 	}
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	line-height: @line-height-base;
 	a { .link(@text) }
 }
 
 // 글: 메타
 .entry-meta {
-	.12px;
-	color: @text-light;
-	a { .link(@text-light) }
+	.11px;
+	color: @text-lighter;
+	@media (min-width: @phone) {
+		.font-size(14);
+	}
+	a {
+		.link(@text-lighter);
+		&:hover { .underline }
+	}
 	> span {
 		@media (min-width: @phone) {
 			margin-right: 10px;
 		}
 	}
+}
+
+// 글: 요약
+.entry-summary {
+	.14px;
+	@media (min-width: @phone) { .font-size(18) }
+	font-weight: 200;
+	letter-spacing: -0.02em;
+	margin-top:    5px;
+	margin-bottom: 5px;
 }

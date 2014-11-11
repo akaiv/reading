@@ -1,0 +1,54 @@
+.gnb-mobile {
+	.no-border();
+	position: absolute;
+}
+
+.gnb-desktop {
+	.white;
+	background-image: url('../images/bg-header.jpg');
+	.background(cover,center,top);
+	.site-title {
+		.font-size(24);
+		@media (min-width: @phone) {
+			.font-size(36);
+		}
+		.text-center;
+		font-weight: 300;
+		margin-top: 50px;
+		@media (min-width: @phone) {
+			margin-top: 100px;
+		}
+		@media (min-width: @tablet) {
+			margin-top: 150px;
+		}
+		> a { .link(@white;@white) }
+	}
+	.site-description {
+		.font-size(14);
+		.text-center;
+		.text-light;
+		color: @link-hover-white;
+		font-weight: 200;
+		line-height: 30px;
+	}
+	.site-about {
+		.text-center;
+		margin-top: 10px;
+		margin-bottom: 20px;
+		@media (min-width: @phone) {
+			margin-bottom: 80px;
+		}
+	}
+	.cat-item {
+		padding: 0 12px;
+		&:first-child { padding-left: 0; }
+		a { .link(@link-white;@link-hover-white) }
+	}
+}
+
+//== GNB의 콜랩스 영역
+.navbar-collapse.collapse {
+	@media (min-width: @tablet) {
+		display: none !important;
+	}
+}

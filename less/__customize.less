@@ -19,8 +19,6 @@
 //@container-tablet:             ((720px + @grid-gutter-width));
 //@container-desktop:            ((940px + @grid-gutter-width));
 //@container-large-desktop:      ((1140px + @grid-gutter-width));
-@container-desktop:            @container-tablet;
-@container-large-desktop:      @container-tablet;
 
 //== Border radius
 //@border-radius-base:        4px;
@@ -37,10 +35,14 @@
 //@zindex-modal:             1050;
 
 //== Mid-small grid
-// /* Twitter Bootstrap (Customized) */
-//@media (min-width: @screen-xs-min) and (max-width: @screen-xs-max) { .make-grid(ms) }
+/* Twitter Bootstrap (Customized) */
+.container {
+	max-width: (640px + 20px);
+}
 
 //== Navbar
+@nav-link-padding:                          20px 0;
+@nav-pills-border-radius:                   0;
 //@navbar-height:                    50px;
 //@navbar-margin-bottom:             @line-height-computed;
 //@navbar-border-radius:             @border-radius-base;
@@ -62,4 +64,5 @@
 //@navbar-default-brand-hover-bg:            transparent;
 @navbar-default-toggle-hover-bg:           @navbar-default-bg;
 //@navbar-default-toggle-icon-bar-bg:        #888;
+@navbar-default-toggle-icon-bar-bg:        @link-white;
 //@navbar-default-toggle-border-color:       #ddd;

@@ -1,13 +1,17 @@
 // 브랜드
-@brand:         @blue;
+@brand:         #5d5552;
 @link:          @brand;
-@text:          @gray-dark;
-@text-light:    @gray-light;
+@text:          @gray-33;
+@text-light:    @gray-50;
+@text-lighter:  @gray-75;
 .brand          { color: @brand }
 .bg-brand       { background-color: @brand }
 .text-light     { color: @text-light }
+.text-lighter   { color: @text-lighter }
 
 // 색상
 @line-dark:     darken(@line, 6%);
 @line:          @table-border-color;
 @line-light:    lighten(@line, 6%);
+@link-white:       fadeout(@white, 40%);
+@link-hover-white: fadeout(@white, 20%);
