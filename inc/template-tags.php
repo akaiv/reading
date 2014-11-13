@@ -115,14 +115,14 @@ function akaiv_the_url_hostname() {
 
 /* 글: 썸네일 */
 function akaiv_post_thumbnail() {
-  if ( is_singular() ) : /* 포스트, 페이지, 첨부파일의 경우 */
+  if ( is_singular() ) : /* 글, 페이지, 첨부파일 */
     if ( has_post_thumbnail() ) : ?>
       <div class="post-thumbnail">
         <?php the_post_thumbnail('full'); ?>
       </div><?php
     endif;
 
-  else : /* 외부: a.post-thumbnail에 링크 부여하고 썸네일을 가져옴 */ ?>
+  else : /* 외부 */ ?>
     <a class="post-thumbnail" href="<?php akaiv_the_url(); ?>"><?php
       if ( has_post_thumbnail() ) :
         the_post_thumbnail('thumbnail');
@@ -131,7 +131,7 @@ function akaiv_post_thumbnail() {
       endif; ?>
     </a><?php
 
-  endif; /* End is_singular() */
+  endif;
 }
 
 /* 글: 메타 */
