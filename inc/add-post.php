@@ -31,7 +31,7 @@ function add_post( $post ) {
   if ( is_wp_error( $post_id ) )
     return false;
 
-  update_post_meta( $post_id, 'wpcf-url', $post['url'] );
+  update_post_meta( $post_id, 'wpcf-website-url', $post['url'] );
   return true;
 
 }
