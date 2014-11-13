@@ -47,11 +47,17 @@ function akaiv_head() { ?>
   <meta name="msapplication-wide310x150logo" content="<?php echo get_template_directory_uri(); ?>/images/favicon/mstile-310x150.png">
   <meta name="application-name" content="<?php bloginfo( 'name' ); ?>">
 
-  <?php if ( is_single() ) : ?>
+  <?php if ( is_singular() ) : ?>
   <meta property="og:title" content="<?php single_post_title(); ?>">
-  <meta property="og:description" content="<?php $excerpt = get_the_excerpt(); if ( $excerpt != '' ) echo $excerpt; ?>">
+  <meta property="og:description" content="<?php echo strip_tags(get_the_excerpt()); ?>">
   <meta property="og:url" content="<?php the_permalink(); ?>">
   <meta property="og:type" content="article">
+  <?php
+    $fb_image = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
+    if ($fb_image) :
+      echo '<meta property="og:image" content="'.$fb_image[0].'">';
+    endif;
+  ?>
 
   <?php else : ?>
   <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
