@@ -6,7 +6,7 @@
   </h1>
 </header>
 <div class="entry-summary">
-  <?php the_excerpt(); ?>
+  <p><?php the_excerpt(); ?></p>
 </div>
 <div class="entry-meta">
   <?php akaiv_post_meta( 'category' ); ?>

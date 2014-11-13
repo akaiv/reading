@@ -78,6 +78,7 @@ function akaiv_the_title() {
 /* 글: URL */
 function akaiv_get_url() {
   $url = get_post_meta( get_the_ID(), 'wpcf-website-url', true );
+  if ( ! $url ) $url = '#';
   return esc_url( $url );
 }
 function akaiv_the_url() {
@@ -136,7 +137,7 @@ function akaiv_post_thumbnail() {
 /* 글: 메타 */
 function akaiv_post_meta($str = null) {
   if ( ! $str ) :
-    return false;
+    return;
 
   elseif ( $str == 'category' ) : ?>
     <span class="cat-links"><i class="fa fa-fw fa-folder-open"></i> <?php echo get_the_category_list( ', ' ); ?></span><?php
@@ -150,19 +151,17 @@ function akaiv_post_meta($str = null) {
     <span class="posted-on"><i class="fa fa-fw fa-clock-o"></i> <a href="<?php echo get_month_link( get_the_time('Y'), get_the_time('m') ); ?>"><time class="entry-date" datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>"><?php echo esc_html( get_the_date() ) ?></time></a></span><?php
 
   elseif ( $str == 'author' ) : ?>
-    <span class="byline author vcard"><i class="fa fa-fw fa-user"></i> <a class="url fn" href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author"><?php echo get_the_author(); ?></a></span><?php
+    <span class="author"><i class="fa fa-fw fa-user"></i> <a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author"><?php echo get_the_author(); ?></a></span><?php
 
   endif;
 }
 
 /* 글: 편집 링크 */
 function akaiv_edit_post_link() {
-  if ( is_page() ) : ?>
-    <div class="text-right">
-      <?php edit_post_link( '편집', '<span class="edit-link">', '</span>' ); ?>
-    </div><?php
-  else :
+  if ( ! is_page() ) :
     edit_post_link( '편집', '<span class="edit-link"><i class="fa fa-fw fa-pencil"></i> ', '</span>' );
+  else :
+    edit_post_link( '편집', '<div class="text-right"><span class="edit-link">', '</span></div>' );
   endif;
 }
 
