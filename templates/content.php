@@ -1,4 +1,4 @@
-<?php akaiv_before_page(); ?>
+<?php akaiv_before_post(); ?>
 
 <header class="entry-header">
   <h1 class="entry-title">
@@ -16,4 +16,4 @@
   <?php akaiv_edit_post_link(); ?>
 </div>
 
-<?php akaiv_after_page(); ?>
+<?php akaiv_after_post(); ?>
