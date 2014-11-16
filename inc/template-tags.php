@@ -62,7 +62,7 @@ function akaiv_page_title() {
     echo get_the_title();
 
   elseif( is_home() || is_front_page() ) :
-    echo '최근 글 목록';
+    echo get_bloginfo( 'name', 'display' );
 
   else :
     echo get_bloginfo( 'name', 'display' );
