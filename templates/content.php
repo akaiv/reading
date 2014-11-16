@@ -12,7 +12,7 @@
   <?php akaiv_post_meta( 'category' ); ?>
   <?php akaiv_the_url_hostname(); ?>
   <?php akaiv_post_meta( 'tag' ); ?>
-  <?php akaiv_post_meta( 'date' ); ?>
+  <?php if ( has_tag() ) akaiv_post_meta( 'date' ); ?>
   <?php akaiv_edit_post_link(); ?>
 </div>
 

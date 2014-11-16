@@ -125,6 +125,11 @@ function akaiv_paginate_links() {
   endif;
 }
 
+/* 타이틀 */
+function akaiv_title() {
+  wp_title( '|', true, 'right');
+}
+
 /* 메타: 루프 바깥에서 */
 function akaiv_meta($meta = null) {
   if ( ! $meta ) return;
@@ -147,7 +152,9 @@ function akaiv_meta($meta = null) {
     echo get_the_category()[0]->cat_name;
 
   elseif ( $meta == 'tags' ) :
-    return get_the_tags();
+    $tags = get_the_tags();
+    if ( ! $tags ) $tags = array();
+    return $tags;
 
   elseif ( $meta == 'time' ) :
     echo esc_attr( get_the_date( 'c' ) );

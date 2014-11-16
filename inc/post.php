@@ -20,7 +20,7 @@ function akaiv_the_title() {
   echo $title;
 }
 
-/* 글: URL */
+/* URL */
 function akaiv_get_url() {
   $url = get_post_meta( get_the_ID(), 'wpcf-website-url', true );
   if ( ! $url ) $url = '#';
@@ -52,9 +52,9 @@ function akaiv_the_url_hostname() {
     );
 
     $urlHost = parse_url($url)['host'];
-    $urlHostName = empty( $urlHosts[$urlHost] ) ? $urlHost : $urlHosts[$urlHost];
+    $urlHostName = empty( $urlHosts[$urlHost] ) ? $urlHost : $urlHosts[$urlHost]; ?>
 
-    echo '<span class="url-hostname"><i class="fa fa-fw fa-quote-left"></i> <a href="<?php akaiv_the_url(); ?>" target="_blank" class="url">'.$urlHostName.'</a></span>';
+    <span class="url-hostname"><i class="fa fa-fw fa-quote-left"></i> <a href="<?php akaiv_the_url(); ?>" target="_blank" class="url"><?php echo $urlHostName; ?></a></span><?php
   endif;
 }
 
