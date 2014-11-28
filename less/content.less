@@ -9,7 +9,7 @@
 	@media (min-width: @tablet) {
 		.font-size(28);
 	}
-	font-weight: 700;
+	font-weight: @bold;
 	letter-spacing: -0.02em;
 	line-height: @line-height-base;
 	a { .link(@text) }
@@ -37,7 +37,7 @@
 .entry-summary {
 	.14px;
 	@media (min-width: @phone) { .font-size(18) }
-	font-weight: 200;
+	font-weight: (@normal - 100);
 	letter-spacing: -0.02em;
 	margin-top:    5px;
 	margin-bottom: 5px;
