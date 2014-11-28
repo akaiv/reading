@@ -1,3 +1,11 @@
+html {
+	min-height: 100%;
+	position: relative;
+}
+body {
+	margin-bottom: (@footer-height + @footer-margin);
+}
+
 // 헤더
 .site-header {
 	position: relative;
@@ -16,6 +24,13 @@
 }
 
 // 푸터
+@footer-height: 60px;
+@footer-margin: 30px;
 .site-footer {
-	margin-top: 30px;
+	height:     @footer-height;
+	margin-top: @footer-margin;
+	position: absolute;
+	bottom: 0;
+	left: 0; right: 0;
+	width: 100%;
 }
