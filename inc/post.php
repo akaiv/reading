@@ -22,7 +22,7 @@ function akaiv_the_title() {
 
 /* URL */
 function akaiv_get_url() {
-  $url = get_post_meta( get_the_ID(), 'wpcf-website-url', true );
+  $url = akaiv_get_post_meta( 'website-url' );
   if ( ! $url ) $url = '#';
   return esc_url( $url );
 }
@@ -116,7 +116,7 @@ function akaiv_get_attachment_image_src($attachment_id, $size = 'full') {
 }
 
 /* 메타 */
-function akaiv_post_meta($meta = null, $icon = '') {
+function akaiv_entry_meta($meta = null, $icon = '') {
   if ( ! $meta ) return;
   if ( ! empty($icon) ) $icon = '<i class="fa fa-fw '.$icon.'"></i> ';
 
@@ -139,6 +139,14 @@ function akaiv_post_meta($meta = null, $icon = '') {
     <span class="author"><?php echo $icon; ?><a href="<?php echo esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ); ?>" rel="author"><?php echo esc_html( get_the_author() ); ?></a></span><?php
 
   endif;
+}
+/* 메타 (커스텀필드) */
+function akaiv_post_meta( $meta ) {
+  echo akaiv_get_post_meta( $meta );
+}
+function akaiv_get_post_meta( $meta ) {
+  $value = get_post_meta( get_the_ID(), 'wpcf-'.$meta, true );
+  return $value;
 }
 
 /* 편집 링크 */
@@ -172,4 +180,18 @@ function akaiv_post_nav() {
       endif; ?>
     </div>
   </nav><?php
+}
+
+/* 도구: 레티나 이미지 */
+function akaiv_retina_image( $filename, $ext = 'png', $alt ) {
+  $src    = akaiv_get_image( $filename .    '.' . $ext );
+  $srcset = akaiv_get_image( $filename . '@2x.' . $ext . ' 2x' );
+  list( $src_width, $src_height ) = getimagesize( $src );
+  $hwstring = image_hwstring( $src_width, $src_height );
+  echo '<img src="'.$src.'" alt="'.$alt.'" '.$hwstring.'srcset="'.$srcset.'">';
+}
+
+/* 도구: 테마 디렉토리의 이미지파일 리턴 */
+function akaiv_get_image( $image ) {
+  return get_template_directory_uri() . '/images/' . $image;
 }
